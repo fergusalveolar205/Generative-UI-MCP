@@ -25,6 +25,18 @@ The model calls `load_ui_guidelines` with the modules it needs, and gets back co
 
 ## Quick start
 
+### Auto-install via AI
+
+Copy and paste the following prompt into your AI assistant (Claude Code, Cursor, etc.) to install automatically:
+
+> Install the `generative-ui-mcp` MCP server. Run `npx generative-ui-mcp` as a stdio MCP server. The server name should be "generative-ui".
+
+### Claude Code
+
+```bash
+claude mcp add generative-ui -- npx generative-ui-mcp
+```
+
 ### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
@@ -33,20 +45,16 @@ Add to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "generative-ui": {
-      "command": "node",
-      "args": ["/path/to/Generative-UI-MCP/build/index.js"]
+      "command": "npx",
+      "args": ["generative-ui-mcp"]
     }
   }
 }
 ```
 
-### Claude Code
+### Cursor / Windsurf
 
-```bash
-claude mcp add generative-ui node /path/to/Generative-UI-MCP/build/index.js
-```
-
-### npx (after publishing to npm)
+Add to your MCP settings (`.cursor/mcp.json` or equivalent):
 
 ```json
 {
